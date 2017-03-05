@@ -29,7 +29,8 @@ jsonEditorHelper.add = function(project,ticket,task,start,end){
 timeSheetHelper = {};
 timeSheetHelper.processJson = function(json)
 {
-    jsonEditorHelper.add(json.project,json.ticket,json.description,json.actual_start,json.stop);
+    jsonEditorHelper.add(json.project,json.ticket,json.jira_entry,json.actual_start,json.stop);
+    console.log(window.csvConvertHelper.friendlyJson());
 
 };
 
