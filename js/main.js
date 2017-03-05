@@ -51,3 +51,26 @@ $(function(){
         }
     });
 });
+
+PostHelper = {};
+PostHelper.getBaseUrl = function(){
+    return '..';
+};
+PostHelper.sendData = function (csv,json)
+{
+    var jsonConfig = {
+        url: this.getBaseUrl() + '/php/process.php',
+        method: "POST",
+        data: {csv:csv,json:json}
+    };
+    var jqxhr = $.ajax(jsonConfig)
+        .done(function() {
+            alert( "success" );
+        })
+        .fail(function() {
+            alert( "error" );
+        })
+        .always(function() {
+            // alert( "complete" );
+        });
+};

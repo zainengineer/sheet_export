@@ -11,7 +11,11 @@ csvConvertHelper.process = function () {
 };
 csvConvertHelper.convert = function(){
     var json = this.csvJsonArray();
-    return Papa.unparse(json);
+    var csv = Papa.unparse(json);
+
+    PostHelper.sendData(csv,json);
+
+    return csv;
 };
 csvConvertHelper.csvJsonArray = function(){
     var originalJson = window.jsonEditorHelper.editor.getValue();
