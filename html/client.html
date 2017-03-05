@@ -1,0 +1,18 @@
+<script>
+    //listen to holla back
+    window.addEventListener('message', function (event) {
+        var url = event.origin;
+        var hostname = (new URL(url)).hostname;
+        var tld = hostname.split('.').pop();
+        if ((tld == 'local') || (hostname == 'toggl-timesheet.herokuapp.com')) {
+            addToLocalStorage(event.data);
+            console.log('received response:  ', event.data);
+        }
+        else {
+            console.log('ignoring response from ' + url);
+        }
+    }, false);
+    function addToLocalStorage(value) {
+        localStorage.setItem('postedMessage', JSON.stringify(value));
+    }
+</script>
