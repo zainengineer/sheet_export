@@ -15,6 +15,13 @@ jsonEditorHelper.init = function(json){
 };
 jsonEditorHelper.add = function(project,ticket,task,start,end){
     var json = this.editor.getValue();
+    var projectTitle;
+    var setting = window.settingEditorHelper.editor.getValue();
+    if (!setting.mapping.hasOwnProperty(project)){
+        alert('setting\'s mapping does not contain ' + project);
+        return ;
+    }
+    project = setting.mapping[project];
     if (!json.hasOwnProperty(project)){
         json[project] = {};
     }
