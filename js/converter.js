@@ -1,8 +1,19 @@
 csvConvertHelper = {};
-csvConvertHelper.convert = function(){
+
+csvConvertHelper.process = function () {
+    var csv = this.convert();
+    if (jQuery) {
+        jQuery('.csv-output').val(csv);
+        jQuery('.clip-board-trigger').attr('data-clipboard-text', csv);
+        this.clipBoardBind = new Clipboard('.clip-board-trigger');
+    }
 
 };
-csvConvertHelper.friendlyJson = function(){
+csvConvertHelper.convert = function(){
+    var json = this.csvJsonArray();
+    return Papa.unparse(json);
+};
+csvConvertHelper.csvJsonArray = function(){
     var originalJson = window.jsonEditorHelper.editor.getValue();
     var jsonOutput = [];
     var ticketNumber , taskStart, projectName, projectInfo, ticketInfo,taskInfo,row;

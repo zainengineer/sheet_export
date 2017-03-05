@@ -30,7 +30,7 @@ timeSheetHelper = {};
 timeSheetHelper.processJson = function(json)
 {
     jsonEditorHelper.add(json.project,json.ticket,json.jira_entry,json.actual_start,json.stop);
-    console.log(window.csvConvertHelper.friendlyJson());
+    window.csvConvertHelper.process();
 
 };
 
