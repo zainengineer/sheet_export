@@ -4,7 +4,8 @@
         var url = event.origin;
         var hostname = (new URL(url)).hostname;
         var tld = hostname.split('.').pop();
-        if ((tld == 'local') || (hostname == 'toggl-timesheet.herokuapp.com')) {
+        if ((['local','toggl'].indexOf(tld) >=0 )||
+        (hostname == 'toggl-timesheet.herokuapp.com')) {
             addToLocalStorage(event.data);
             console.log('received response:  ', event.data);
         }
